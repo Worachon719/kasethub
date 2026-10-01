@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { RegisterWizard } from "@/components/auth/register-wizard";
 import { prisma } from "@/lib/prisma";
+import { registrationState } from "@/lib/registration";
 
 export const metadata: Metadata = { title: "ลงทะเบียน" };
 export const dynamic = "force-dynamic";
@@ -13,6 +14,11 @@ export const dynamic = "force-dynamic";
  * page. The province list comes from the database so the KYC step stays in sync
  * with the geography the marketplace is seeded and filtered by; without a
  * database it falls back to an empty list and the field is simply skipped.
+ *
+ * Signup is gated by lib/registration. The gate is checked here as well as in
+ * the API, so a closed form explains itself instead of letting a visitor fill in
+ * four steps and fail on submit — and so the demo accounts stay the visible way
+ * in once the gate closes.
  */
 export default async function RegisterPage() {
   const provinces = process.env.DATABASE_URL
@@ -23,6 +29,8 @@ export default async function RegisterPage() {
         })
         .catch(() => [])
     : [];
+
+  const gate = await registrationState();
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-8 md:px-8 md:py-12">
@@ -58,26 +66,58 @@ export default async function RegisterPage() {
       </div>
 
       <div className="mx-auto mb-6 max-w-2xl rounded-xl border border-hairline bg-surface-2 p-4 text-sm leading-relaxed text-ink-secondary">
-          <p className="font-semibold text-ink">
-            บัญชีสำหรับสาธิตระบบ
-          </p>
-          <p className="mt-1">
-            ต้องการดูข้อมูลที่มีอยู่แล้วโดยไม่ต้องกรอกฟอร์ม?{" "}
-            <Link
-              href="/login"
-              className="font-semibold text-emerald underline"
-            >
-              เข้าสู่ระบบด้วยบัญชีทดลอง
-            </Link>{" "}
-            มีให้เลือกครบทั้งสามบทบาท (เกษตรกร โบรกเกอร์ ผู้ซื้อ)
-          </p>
-          <p className="mt-2 text-xs text-ink-muted">
-            หน้านี้เปิดให้สมัครบัญชีใหม่ได้ทุกคน ข้อมูลที่สมัครจะถูกเก็บ
-            ในฐานข้อมูลของระบบตัวอย่าง โดยไม่มีการส่งออกไปยังบริการอื่น
-          </p>
-        </div>
+        <p className="font-semibold text-ink">บัญชีสำหรับสาธิตระบบ</p>
+        <p className="mt-1">
+          ต้องการดูข้อมูลที่มีอยู่แล้วโดยไม่ต้องกรอกฟอร์ม?{" "}
+          <Link href="/login" className="font-semibold text-emerald underline">
+            เข้าสู่ระบบด้วยบัญชีทดลอง
+          </Link>{" "}
+          มีให้เลือกครบทั้งสามบทบาท (เกษตรกร โบรกเกอร์ ผู้ซื้อ)
+        </p>
 
+        {gate.open ? (
+          <>
+            <p className="mt-2 text-xs text-ink-muted">
+              หน้านี้เปิดให้สมัครบัญชีใหม่ได้ทุกคน ข้อมูลที่สมัครจะถูกเก็บ
+              ในฐานข้อมูลของระบบตัวอย่าง โดยไม่มีการส่งออกไปยังบริการอื่น
+            </p>
+            {gate.remaining !== null ? (
+              <p className="mt-1 text-xs text-ink-muted">
+                เหลือโควตาสมัครอีก {gate.remaining} บัญชี
+                (เปิดให้สมัครทั้งหมด {gate.limit} บัญชี)
+              </p>
+            ) : null}
+          </>
+        ) : (
+          <p className="mt-2 rounded-lg border border-hairline bg-canvas p-3 text-xs text-ink-secondary">
+            <span aria-hidden>🔒 </span>
+            {gate.reason === "full"
+              ? "เต็มโควตาบัญชีสมัครของระบบตัวอย่างแล้ว "
+              : "ปิดการสมัครบัญชีใหม่ชั่วคราว "}
+            ยังเข้าใช้งานระบบได้ตามปกติด้วยบัญชีทดลองที่หน้าเข้าสู่ระบบ
+          </p>
+        )}
+      </div>
+
+      {gate.open ? (
         <RegisterWizard provinces={provinces} />
+      ) : (
+        <div className="mx-auto max-w-2xl rounded-xl border border-hairline bg-surface-2 p-8 text-center">
+          <p className="text-base font-semibold text-ink">
+            ปิดการรับสมัครบัญชีใหม่ชั่วคราว
+          </p>
+          <p className="mt-2 text-sm text-ink-secondary">
+            ระบบอยู่ในช่วงสาธิต หากต้องการทดลองใช้งาน โปรดเข้าสู่ระบบด้วยบัญชีทดลอง
+            ที่มีให้ครบทั้งสามบทบาท
+          </p>
+          <Link
+            href="/login"
+            className="mt-4 inline-flex h-11 items-center rounded-lg bg-emerald px-5 text-sm font-semibold text-white hover:bg-emerald-dark"
+          >
+            ไปหน้าเข้าสู่ระบบ
+          </Link>
+        </div>
+      )}
 
       <p className="mt-8 text-center text-sm text-ink-secondary">
         มีบัญชีอยู่แล้ว?{" "}

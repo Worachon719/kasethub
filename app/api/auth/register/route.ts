@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { fail, handleRouteError, ok, readJson } from "@/lib/api";
 import { hashPassword } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { registrationState } from "@/lib/registration";
 import { registerSchema } from "@/lib/validations";
 
 export const dynamic = "force-dynamic";
@@ -14,6 +15,10 @@ const TIER_FOR_ROLE = {
   BUYER: "UNVERIFIED",
 } as const;
 
+/** Message shown when signup is closed or the guest headcount is used up. */
+const CLOSED_MESSAGE =
+  "การสมัครบัญชีใหม่ปิดอยู่ชั่วคราว กรุณาใช้บัญชีทดลองที่หน้าเข้าสู่ระบบแทน";
+
 /**
  * POST /api/auth/register — create an account with a chosen role.
  *
@@ -21,9 +26,19 @@ const TIER_FOR_ROLE = {
  * is trusted beyond the Zod-validated body, and the session is not created
  * here — the client follows up with signIn so a single code path handles both
  * fresh and returning users.
+ *
+ * Signup is gated by lib/registration: a public deployment writes into one
+ * shared demo database, so the account count is checked before the insert
+ * rather than after, and the gate is read from the environment so a presenter
+ * can close the form after a demo without a redeploy.
  */
 export async function POST(request: NextRequest) {
   try {
+    const gate = await registrationState();
+    if (!gate.open) {
+      return fail(CLOSED_MESSAGE, 403, { reason: gate.reason });
+    }
+
     const body = registerSchema.parse(await readJson(request));
 
     const existing = await prisma.user.findUnique({

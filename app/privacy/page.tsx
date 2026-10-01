@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AcademicNotice } from "@/components/academic-notice";
 import { SiteFooter, SiteHeader } from "@/components/site-header";
 import { Card } from "@/components/ui/card";
 
@@ -23,6 +24,10 @@ export default function PrivacyPage() {
             Privacy Notice
           </span>
         </h1>
+
+        <div className="mt-6">
+          <AcademicNotice kind="privacy" />
+        </div>
 
         <Card className="mt-6 space-y-5 p-6 text-sm leading-relaxed text-ink-secondary">
           <section>
