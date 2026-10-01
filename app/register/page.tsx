@@ -57,7 +57,27 @@ export default async function RegisterPage() {
         </p>
       </div>
 
-      <RegisterWizard provinces={provinces} />
+      <div className="mx-auto mb-6 max-w-2xl rounded-xl border border-hairline bg-surface-2 p-4 text-sm leading-relaxed text-ink-secondary">
+          <p className="font-semibold text-ink">
+            บัญชีสำหรับสาธิตระบบ
+          </p>
+          <p className="mt-1">
+            ต้องการดูข้อมูลที่มีอยู่แล้วโดยไม่ต้องกรอกฟอร์ม?{" "}
+            <Link
+              href="/login"
+              className="font-semibold text-emerald underline"
+            >
+              เข้าสู่ระบบด้วยบัญชีทดลอง
+            </Link>{" "}
+            มีให้เลือกครบทั้งสามบทบาท (เกษตรกร โบรกเกอร์ ผู้ซื้อ)
+          </p>
+          <p className="mt-2 text-xs text-ink-muted">
+            หน้านี้เปิดให้สมัครบัญชีใหม่ได้ทุกคน ข้อมูลที่สมัครจะถูกเก็บ
+            ในฐานข้อมูลของระบบตัวอย่าง โดยไม่มีการส่งออกไปยังบริการอื่น
+          </p>
+        </div>
+
+        <RegisterWizard provinces={provinces} />
 
       <p className="mt-8 text-center text-sm text-ink-secondary">
         มีบัญชีอยู่แล้ว?{" "}

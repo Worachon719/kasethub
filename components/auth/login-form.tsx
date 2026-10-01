@@ -3,6 +3,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { DEMO_PASSWORD, DemoAccounts } from "@/components/auth/demo-accounts";
 import { Button } from "@/components/ui/button";
 import { Input, Label } from "@/components/ui/input";
 
@@ -26,6 +27,21 @@ export function LoginForm({ callbackUrl }: { callbackUrl: string }) {
   // React re-renders the disabled button — cannot fire a second signIn. The
   // ref updates synchronously; the state only drives the visible loading state.
   const inFlight = useRef(false);
+  // Lets the demo-account shortcuts write straight into the form's own inputs.
+  // They are uncontrolled, so assigning `.value` is enough — no state has to be
+  // lifted out of the submit path just to support the shortcut buttons.
+  const formRef = useRef<HTMLFormElement>(null);
+
+  function fillDemo(email: string) {
+    const form = formRef.current;
+    if (!form) return;
+    const emailField = form.elements.namedItem("email") as HTMLInputElement | null;
+    const passwordField = form.elements.namedItem("password") as HTMLInputElement | null;
+    if (emailField) emailField.value = email;
+    if (passwordField) passwordField.value = DEMO_PASSWORD;
+    setError(null);
+    emailField?.focus();
+  }
 
   if (status === "loading") {
     return <p className="text-sm text-ink-muted">กำลังตรวจสอบสถานะ…</p>;
@@ -92,7 +108,8 @@ export function LoginForm({ callbackUrl }: { callbackUrl: string }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="mt-6 space-y-4">
+    <>
+    <form onSubmit={onSubmit} ref={formRef} className="mt-6 space-y-4">
       <div>
         <Label htmlFor="email">อีเมล / Email</Label>
         <Input
@@ -133,5 +150,8 @@ export function LoginForm({ callbackUrl }: { callbackUrl: string }) {
         {pending ? "กำลังตรวจสอบ…" : "เข้าสู่ระบบ"}
       </Button>
     </form>
+
+    <DemoAccounts onPick={fillDemo} />
+    </>
   );
 }

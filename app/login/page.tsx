@@ -4,7 +4,10 @@ import Link from "next/link";
 import { LoginForm } from "@/components/auth/login-form";
 import { Card } from "@/components/ui/card";
 
-export const metadata: Metadata = { title: "เข้าสู่ระบบ" };
+export const metadata: Metadata = {
+  title: "เข้าสู่ระบบ",
+  description: "เข้าสู่ระบบ KasetHub — มีบัญชีทดลองใช้งานให้กดเลือกได้ทันที",
+};
 
 /**
  * Sign-in surface.
@@ -28,10 +31,10 @@ export default async function LoginPage({
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-canvas px-4 py-12">
-      <Card className="w-full max-w-sm p-6">
+      <Card className="w-full max-w-md p-6">
         <h1 className="text-2xl font-bold text-ink">เข้าสู่ระบบ</h1>
         <p className="mt-1 text-sm text-ink-muted">
-          Sign in to bid, post lots, and negotiate on the blockchain record.
+          เข้าสู่ระบบเพื่อประกาศขาย ส่งข้อเสนอ และเจรจาราคากับคู่ค้า
         </p>
 
         <Suspense
