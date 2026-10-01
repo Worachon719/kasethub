@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="สับปะรด">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fcd34d"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.42" r="0.72">
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.07"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <g transform="translate(395.0 184.5) scale(2.05)">
+    
+    <path d="M100 66c40 0 62 32 62 76 0 40-26 66-62 66s-62-26-62-66c0-44 22-76 62-76Z" fill="#b45309"/>
+    <path d="M42 88 q58 -14 116 0" stroke="#fffbeb" stroke-width="4" fill="none" opacity="0.4"/><path d="M42 108 q58 14 116 0" stroke="#fffbeb" stroke-width="4" fill="none" opacity="0.4"/><path d="M42 128 q58 -14 116 0" stroke="#fffbeb" stroke-width="4" fill="none" opacity="0.4"/><path d="M42 148 q58 14 116 0" stroke="#fffbeb" stroke-width="4" fill="none" opacity="0.4"/><path d="M42 168 q58 -14 116 0" stroke="#fffbeb" stroke-width="4" fill="none" opacity="0.4"/><path d="M42 188 q58 14 116 0" stroke="#fffbeb" stroke-width="4" fill="none" opacity="0.4"/>
+    <path d="M70 66 L85 24" stroke="#15803d" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M88 66 L94 24" stroke="#15803d" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M106 66 L103 24" stroke="#15803d" stroke-width="8" stroke-linecap="round" fill="none"/><path d="M124 66 L112 24" stroke="#15803d" stroke-width="8" stroke-linecap="round" fill="none"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#vignette)"/>
+
+  <text x="600" y="826" text-anchor="middle"
+        font-family="'Noto Sans Thai','Leelawadee UI',Tahoma,'Apple SD Gothic Neo',sans-serif"
+        font-size="58" font-weight="700" fill="#b45309">สับปะรด</text>
+  <text x="600" y="868" text-anchor="middle"
+        font-family="'Noto Sans Thai','Leelawadee UI',Tahoma,sans-serif"
+        font-size="26" font-weight="600" fill="#b45309" opacity="0.62">KasetHub</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="กล้วยแผ่นทอด">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fdf6e3"/>
+      <stop offset="100%" stop-color="#e7c98b"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.42" r="0.72">
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.07"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <g transform="translate(395.0 184.5) scale(2.05)">
+    
+    <g transform="translate(0 52)">
+          <path d="M-4.960000000000008 18 q52.480000000000004 -22 209.92000000000002 0 q-52.480000000000004 22 -209.92000000000002 0Z" fill="#92400e"/>
+          <path d="M37.024 12 q62.976 -12 125.952 0" stroke="#fefce8" stroke-width="4" fill="none" opacity="0.5"/>
+        </g><g transform="translate(0 88)">
+          <path d="M-16.480000000000004 18 q58.24 -22 232.96 0 q-58.24 22 -232.96 0Z" fill="#92400e"/>
+          <path d="M30.111999999999995 12 q69.888 -12 139.776 0" stroke="#fefce8" stroke-width="4" fill="none" opacity="0.5"/>
+        </g><g transform="translate(0 124)">
+          <path d="M-28 18 q64 -22 256 0 q-64 22 -256 0Z" fill="#92400e"/>
+          <path d="M23.200000000000003 12 q76.8 -12 153.6 0" stroke="#fefce8" stroke-width="4" fill="none" opacity="0.5"/>
+        </g><g transform="translate(0 160)">
+          <path d="M-16.480000000000004 18 q58.24 -22 232.96 0 q-58.24 22 -232.96 0Z" fill="#92400e"/>
+          <path d="M30.111999999999995 12 q69.888 -12 139.776 0" stroke="#fefce8" stroke-width="4" fill="none" opacity="0.5"/>
+        </g><g transform="translate(0 196)">
+          <path d="M-4.960000000000008 18 q52.480000000000004 -22 209.92000000000002 0 q-52.480000000000004 22 -209.92000000000002 0Z" fill="#92400e"/>
+          <path d="M37.024 12 q62.976 -12 125.952 0" stroke="#fefce8" stroke-width="4" fill="none" opacity="0.5"/>
+        </g>
+  </g>
+  <rect width="1200" height="900" fill="url(#vignette)"/>
+
+  <text x="600" y="826" text-anchor="middle"
+        font-family="'Noto Sans Thai','Leelawadee UI',Tahoma,'Apple SD Gothic Neo',sans-serif"
+        font-size="58" font-weight="700" fill="#92400e">กล้วยแผ่นทอด</text>
+  <text x="600" y="868" text-anchor="middle"
+        font-family="'Noto Sans Thai','Leelawadee UI',Tahoma,sans-serif"
+        font-size="26" font-weight="600" fill="#92400e" opacity="0.62">KasetHub</text>
+</svg>

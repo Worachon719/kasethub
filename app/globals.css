@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Canvas & surfaces — warm stone undertones per the design system */
+    --canvas: #fafaf9;
+    --surface-1: #ffffff;
+    --surface-2: #f5f5f4;
+    --border-subtle: #e2e8f0;
+
+    /* Agrarian primary */
+    --emerald: #15803d;
+    --emerald-dark: #166534;
+    --emerald-bright: #22c55e;
+
+    /* Urgency / liquidation */
+    --harvest: #ea580c;
+    --amber: #f97316;
+    --mandarin: #fb923c;
+
+    /* Typography */
+    --ink: #0f172a;
+    --ink-secondary: #334155;
+    --ink-muted: #64748b;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-jakarta), var(--font-prompt), system-ui,
+      sans-serif;
+  }
+
+  /* Thai script needs extra vertical room for tone marks and vowel signs. */
+  :lang(th) {
+    line-height: 1.65;
+  }
+
+  /* Price, tonnage, and countdown figures must align in dense tables. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Tier 2 — floating actions, drawers, modals */
+  .surface-float {
+    background: #ffffff;
+    box-shadow:
+      0 10px 25px -5px rgba(15, 23, 42, 0.05),
+      0 8px 10px -6px rgba(15, 23, 42, 0.03);
+  }
+
+  /* Sticky headers and mobile nav dock */
+  .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Tier 3 — live countdown highlight */
+  .surface-attention {
+    box-shadow:
+      0 0 0 1px rgba(234, 88, 12, 0.15),
+      0 12px 20px -4px rgba(234, 88, 12, 0.08);
+  }
+}

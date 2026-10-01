@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html lang="th"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary-container":"#d3ffd5","secondary-fixed":"#ffdbce","on-primary":"#ffffff","surface-container-high":"#e2e7ff","outline-variant":"#becabc","error":"#ba1a1a","error-container":"#ffdad6","on-tertiary-fixed":"#002109","on-surface-variant":"#3f493f","surface-container-lowest":"#ffffff","primary":"#00652c","surface-bright":"#faf8ff","on-secondary-container":"#571a00","on-tertiary":"#ffffff","on-error-container":"#93000a","surface":"#faf8ff","on-tertiary-fixed-variant":"#005321","inverse-primary":"#79db8d","primary-container":"#15803d","secondary-fixed-dim":"#ffb599","surface-container":"#eaedff","tertiary":"#00652b","background":"#faf8ff","tertiary-fixed-dim":"#4ae176","surface-tint":"#006d30","surface-variant":"#dae2fd","primary-fixed-dim":"#79db8d","inverse-surface":"#283044","secondary":"#a73a00","on-secondary":"#ffffff","on-surface":"#131b2e","on-error":"#ffffff","surface-container-low":"#f2f3ff","outline":"#6f7a6e","surface-dim":"#d2d9f4","surface-container-highest":"#dae2fd","tertiary-container":"#008138","on-primary-fixed-variant":"#005323","primary-fixed":"#95f8a7","on-background":"#131b2e","on-primary-fixed":"#00210a","secondary-container":"#fd651e","on-secondary-fixed-variant":"#7f2b00","inverse-on-surface":"#eef0ff","on-secondary-fixed":"#370e00","tertiary-fixed":"#6bff8f","on-tertiary-container":"#d5ffd5"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xl":"2.5rem","space-lg":"1.5rem","space-sm":"0.5rem","space-xs":"0.25rem","margin-mobile":"1rem","gutter-mobile":"0.75rem","space-md":"1rem","margin":"2rem","gutter":"1.5rem"},fontFamily:{"body-md":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"numeric-table":["Plus Jakarta Sans"],"body-xl":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"body-md":["14px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"700"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"600"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-xl-mobile":["28px",{"lineHeight":"36px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","letterSpacing":"0em","fontWeight":"400"}],"display-lg":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"800"}],"display-lg-mobile":["34px",{"lineHeight":"42px","letterSpacing":"-0.01em","fontWeight":"800"}],"numeric-table":["14px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-xl":["18px",{"lineHeight":"28px","letterSpacing":"0em","fontWeight":"400"}],"headline-md":["22px",{"lineHeight":"30px","letterSpacing":"0em","fontWeight":"600"}],"headline-xl":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_12px_rgba(0,0,0,0.05)] z-50 flex flex-col justify-between py-space-lg"><div class="flex flex-col gap-space-lg px-space-md"><div class="flex items-center gap-space-sm px-space-sm"><img alt="KasetHub Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1UoNWKprAS0o1zNj5AJHvAnCpfpElTcXjxJabXI3tq2IVQamgteRRrxsrZWL4vtcs6EmMKI2fezIxfRkEh_-rwLiEdRjCzA5afV8RAK1xpeTcWRCKqYaUB_hyJmXpK7FVCRb6I5dbJdK4_39EAdGd850ylF8rEy7_ErknjiEn2NFMe7bXRROH7DcwyBMhwC7aXaUJbaKJG-MxToSYN4RQSNIz385U8BC31ez79n99FdRWbXFABtWfPjnIs"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary font-bold leading-tight">KasetHub</span><span class="font-label-sm text-label-sm text-outline">ระบบจัดการเกษตรกร</span></div></div><div class="bg-surface-container-low p-space-sm rounded-xl flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCewpcCA6cjDag0-EHFOq4isyO0Su13074XRnS-74NSetTIBrdJdVv3JbsT9ynlPTxvKA-nD2sVXZWnRj14dqp3DXV_h96dopdTwNfIKnFa4vBjDVW2lpKKUSKQtbV_2n6LLFZ7q660uYZk540WU8BMcCjteFLT12B_oA3I_MDYXGD-z5v3uaManzdWCZderDFvZY3rVnLDd-nLsxFj_TbY0ilxck27VPDJ4hVylQ9HfhFSI5jqtw8omQ"/><div class="flex flex-col overflow-hidden"><span class="font-label-md text-label-md text-on-surface truncate">ลุงสมศักดิ์ • สวนอินทรีย์</span><span class="font-label-sm text-label-sm text-primary font-semibold">เกษตรกรยืนยันตัวตนแล้ว</span></div></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-bold rounded-xl"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary font-bold rounded-xl" data-path="farmer-dashboard" href="#"><span class="material-symbols-outlined text-lg">dashboard</span><span class="font-label-lg text-label-lg">ภาพรวมฟาร์ม (Overview)</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="manage-lots" href="#"><span class="material-symbols-outlined text-lg">inventory_2</span><span class="font-label-lg text-label-lg">ล็อตสินค้าคงเหลือ (Lots)</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="live-auctions" href="#"><span class="material-symbols-outlined text-lg">gavel</span><span class="font-label-lg text-label-lg">การประมูลด่วน (Live Bids)</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="escrow-payouts" href="#"><span class="material-symbols-outlined text-lg">account_balance_wallet</span><span class="font-label-lg text-label-lg">การเงิน &amp; Escrow (Payouts)</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="cold-chain-tracking" href="#"><span class="material-symbols-outlined text-lg">ac_unit</span><span class="font-label-lg text-label-lg">สถานะรถเย็น (Cold Chain)</span></a></nav></div><div class="px-space-md flex flex-col gap-space-sm"><a class="w-full flex items-center justify-center gap-space-xs py-space-sm px-space-md rounded-xl font-label-lg text-label-lg bg-secondary text-on-secondary hover:bg-on-secondary-container transition-all shadow-sm" data-path="post-urgent-listing" href="#"><span class="material-symbols-outlined text-base">add_circle</span><span>+ ลงขายผลผลิตใหม่</span></a><div class="flex items-center justify-between px-space-sm font-label-sm text-label-sm text-outline"><span>ศูนย์ติดต่อ: 02-123-4567</span><span>v2.4 Agri</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-sm"><div class="flex items-center gap-space-xs bg-surface-container-low px-space-sm py-space-xs rounded-full text-primary font-label-md text-label-md"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span>ตลาดเปิดทำการปกติ (Realtime Bidding Active)</span></div></div><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer"><span class="material-symbols-outlined">notifications</span></div><div class="flex items-center gap-space-xs text-on-surface-variant hover:text-on-surface cursor-pointer"><span class="material-symbols-outlined">help</span></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCewpcCA6cjDag0-EHFOq4isyO0Su13074XRnS-74NSetTIBrdJdVv3JbsT9ynlPTxvKA-nD2sVXZWnRj14dqp3DXV_h96dopdTwNfIKnFa4vBjDVW2lpKKUSKQtbV_2n6LLFZ7q660uYZk540WU8BMcCjteFLT12B_oA3I_MDYXGD-z5v3uaManzdWCZderDFvZY3rVnLDd-nLsxFj_TbY0ilxck27VPDJ4hVylQ9HfhFSI5jqtw8omQ"/><span class="font-label-md text-label-md text-on-surface">ลุงสมศักดิ์</span></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Dynamic Top Alert Ticker -->
+<div class="w-full bg-secondary-fixed text-on-secondary-fixed px-space-md py-space-xs flex items-center justify-between text-body-sm font-body-sm shadow-sm">
+<div class="flex items-center gap-space-sm overflow-hidden">
+<span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-secondary text-on-secondary shrink-0">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+</span>
+<span class="font-label-md text-label-md text-secondary">ตลาดซื้อขายล่วงหน้าสดใหม่:</span>
+<span class="truncate">ดีมานด์ผลไม้ส่งออกจีนพุ่งสูง +18% สัปดาห์นี้ • รถห้องเย็นเส้นทางเชียงใหม่-กทม. ว่าง 4 คัน (อัปเดต 5 นาทีที่แล้ว)</span>
+</div>
+<div class="hidden md:flex items-center gap-space-sm shrink-0 font-numeric-table text-numeric-table text-on-secondary-fixed-variant">
+<span>ดัชนีราคากลางลำไย: ฿42.50/กก. (+3.2%)</span>
+</div>
+</div>
+<div class="p-space-lg md:p-space-xl flex flex-col gap-space-xl max-w-[1360px] mx-auto w-full">
+<!-- Top Welcome Banner & CTA -->
+<div class="relative overflow-hidden rounded-2xl bg-surface-container-lowest p-space-lg md:p-space-xl shadow-sm flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-lg">
+<div class="relative z-10 flex flex-col gap-space-xs max-w-2xl">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-sm text-amber-500" style="font-variation-settings: 'FILL' 1;">star</span>
+            สมาชิกเกษตรกรระดับทอง (Gold Verified) • คะแนน 4.95
+          </span>
+<span class="px-space-sm py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">
+            ตรวจรับรอง GAP ออร์แกนิค
+          </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight mt-1">
+          สวัสดี ลุงสมศักดิ์ ชัยมงคล
+          <span class="block font-headline-sm text-headline-sm text-outline font-normal mt-0.5">สวนล้านนาออร์แกนิค • อ.ฝาง จ.เชียงใหม่</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+          ระบบจัดการจับคู่โบรกเกอร์และโรงงานแปรรูปอัตโนมัติ ช่วยเร่งระบายผลผลิตสด ลดการสูญเสียผลผลิตหลังเก็บเกี่ยว
+        </p>
+</div>
+<div class="relative z-10 flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm rounded-xl font-label-lg text-label-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>ดาวน์โหลดรายงานยอดขาย</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-lg py-space-sm rounded-xl font-label-lg text-label-lg bg-secondary text-on-secondary hover:bg-on-secondary-container transition-all shadow-md hover:shadow-lg" type="button">
+<span class="material-symbols-outlined text-lg">bolt</span>
+<span>+ สร้างรายการขายด่วนใหม่ (Create Urgent Listing)</span>
+</button>
+</div>
+<!-- Subtle background flourish -->
+<div class="absolute right-0 top-0 w-80 h-80 rounded-full bg-gradient-to-br from-primary-fixed/20 via-surface-container/30 to-transparent pointer-events-none -mr-16 -mt-16 blur-2xl"></div>
+</div>
+<!-- Quick Metric Cards (4 stats) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">ผลผลิตที่กำลังระบาย</span>
+<span class="font-label-sm text-label-sm text-outline">Active Lots In Market</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">3</span>
+<span class="font-label-lg text-label-lg text-primary font-semibold">รายการ</span>
+<span class="font-numeric-table text-numeric-table text-outline ml-auto">(8,200 กก.)</span>
+</div>
+<div class="mt-space-xs flex items-center gap-1 font-body-sm text-body-sm text-on-surface-variant">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>1 ล็อตอยู่ในเกณฑ์เร่งด่วน 34 ชม.</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">ข้อเสนอรอการตอบรับ</span>
+<span class="font-label-sm text-label-sm text-outline">Pending Broker Offers</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-xl">gavel</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-secondary">5</span>
+<span class="font-label-lg text-label-lg text-secondary font-semibold">ข้อเสนอ</span>
+<span class="font-numeric-table text-numeric-table text-outline ml-auto">฿248,500 รวม</span>
+</div>
+<div class="mt-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<span>มี 2 ผู้ซื้อพร้อมชำระ Escrow เต็มจำนวน</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">เงินประกันในระบบ</span>
+<span class="font-label-sm text-label-sm text-outline">Escrow Balance Guaranteed</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-xl">lock</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-primary">฿185,000</span>
+</div>
+<div class="mt-space-xs flex items-center gap-1 font-body-sm text-body-sm text-primary font-medium">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>พร้อมโอนอัตโนมัติเมื่อขึ้นรถเย็น</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">ยอดขายสะสมเดือนนี้</span>
+<span class="font-label-sm text-label-sm text-outline">Monthly Revenue (MDT)</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">trending_up</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-on-surface">฿462,800</span>
+</div>
+<div class="mt-space-xs flex items-center gap-1 font-body-sm text-body-sm text-primary-container font-semibold">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>+24% จากเดือนก่อนหน้า</span>
+</div>
+</div>
+</div>
+<!-- Sales Summary Chart Section (สรุปยอดขายและปริมาณการระบายผลผลิต) -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-lg md:p-space-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Surplus Liquidation &amp; Rescue Volume</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">สรุปยอดขายและปริมาณการระบายผลผลิต (Surplus Rescue Metric)</h2>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-low p-1 rounded-xl">
+<button class="px-space-sm py-1 rounded-lg bg-surface-container-lowest font-label-md text-label-md text-primary font-bold shadow-xs">4 สัปดาห์ล่าสุด</button>
+<button class="px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md">ไตรมาส 1/2024</button>
+<button class="px-space-sm py-1 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md">ตลอดปี</button>
+</div>
+</div>
+<!-- Chart and Impact Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- SVG Visual Chart (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-sm bg-surface-container-low/60 rounded-xl p-space-lg">
+<div class="flex items-center justify-between font-label-md text-label-md text-on-surface-variant">
+<span>ปริมาณผลผลิตที่ช่วยระบายทันก่อนสุกจัด (ตัน)</span>
+<span class="font-numeric-table text-numeric-table text-primary">รวมสะสม 19.6 ตัน</span>
+</div>
+<!-- Inline SVG Bar Chart -->
+<div class="w-full h-48 flex items-end">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 480 180">
+<!-- Grid Horizontal Lines -->
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="480" y1="20" y2="20"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="480" y1="70" y2="70"></line>
+<line class="text-surface-container-high" stroke="currentColor" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="480" y1="120" y2="120"></line>
+<line class="text-outline-variant" stroke="currentColor" stroke-width="1" x1="0" x2="480" y1="170" y2="170"></line>
+<!-- Bars with Theme Colors -->
+<!-- W1: 2.1 ton -> h=35 -->
+<rect class="transition-all hover:opacity-80" fill="#79db8d" height="35" rx="6" width="55" x="40" y="135"></rect>
+<text fill="#00652c" font-size="11" font-weight="700" text-anchor="middle" x="67" y="125">2.1 ตัน</text>
+<text fill="#6f7a6e" font-size="11" text-anchor="middle" x="67" y="185">สัปดาห์ 1</text>
+<!-- W2: 3.5 ton -> h=58 -->
+<rect class="transition-all hover:opacity-80" fill="#15803d" height="58" rx="6" width="55" x="150" y="112"></rect>
+<text fill="#00652c" font-size="11" font-weight="700" text-anchor="middle" x="177" y="102">3.5 ตัน</text>
+<text fill="#6f7a6e" font-size="11" text-anchor="middle" x="177" y="185">สัปดาห์ 2</text>
+<!-- W3: 5.8 ton -> h=96 -->
+<rect class="transition-all hover:opacity-80" fill="#15803d" height="96" rx="6" width="55" x="260" y="74"></rect>
+<text fill="#00652c" font-size="11" font-weight="700" text-anchor="middle" x="287" y="64">5.8 ตัน</text>
+<text fill="#6f7a6e" font-size="11" text-anchor="middle" x="287" y="185">สัปดาห์ 3</text>
+<!-- W4: 8.2 ton -> h=136 (Highlighted Harvest Peak) -->
+<rect class="transition-all hover:opacity-80" fill="#fd651e" height="136" rx="6" width="55" x="370" y="34"></rect>
+<text fill="#a73a00" font-size="12" font-weight="800" text-anchor="middle" x="397" y="24">8.2 ตัน 🔥</text>
+<text fill="#131b2e" font-size="11" font-weight="700" text-anchor="middle" x="397" y="185">สัปดาห์ 4</text>
+</svg>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-outline pt-2">
+<span>* เปรียบเทียบปริมาณระบายผ่านการเคาะประมูลด่วนและคำสั่งซื้อล่วงหน้า</span>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm bg-primary-container"></span> ออเดอร์ปกติ</span>
+<span class="flex items-center gap-1"><span class="w-3 h-3 rounded-sm bg-secondary-container"></span> ล็อตเร่งด่วนพิเศษ</span>
+</div>
+</div>
+</div>
+<!-- Metric Callouts (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Callout 1 -->
+<div class="p-space-md rounded-xl bg-on-primary-container/30 flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">compost</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">ลดการเน่าเสีย 92.4%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">เทียบกับการกระจายสินค้าผ่านพ่อค้าคนกลางแบบเดิม ประหยัดต้นทุนจมกว่า ฿140,000</span>
+</div>
+</div>
+<!-- Callout 2 -->
+<div class="p-space-md rounded-xl bg-secondary-fixed/50 flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary text-on-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">speed</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">ปิดดีลเฉลี่ย 18 ชม.</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">จับคู่ผู้ซื้อจากตลาดไท, โรงงานส่งออก และเครือข่ายโมเดิร์นเทรดได้ก่อนผลไม้เปลี่ยนเกรด</span>
+</div>
+</div>
+<!-- Callout 3 (Escrow Safety) -->
+<div class="p-space-md rounded-xl bg-surface-container flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-tint text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">ไร้หนี้สูญ 100%</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">ระบบ KasetPay พักเงินมัดจำล่วงหน้าเข้าบัญชี Escrow ก่อนสินค้าเคลื่อนย้าย</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Listed Products & Incoming Offers (Two-Column Layout) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg">
+<!-- Left Column: My Listed Products with Stock Status (7 cols) -->
+<div class="xl:col-span-7 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">รายการผลผลิตของฉันและสถานะคลัง (My Listed Lots)</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">สถานะอัปเดตเซนเซอร์ความชื้นและอุณหภูมิคลังสดแบบเรียลไทม์</span>
+</div>
+<button class="font-label-md text-label-md text-primary font-semibold hover:underline">ดูทั้งหมด (3)</button>
+</div>
+<!-- Product Cards Stack -->
+<div class="flex flex-col gap-space-md">
+<!-- Item 1: Mango (Urgent) -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md flex flex-col sm:flex-row gap-space-md">
+<div class="relative w-full sm:w-44 h-36 shrink-0 rounded-xl overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Golden Nam Dok Mai mangoes harvested in natural crate, lush green orchard background, high contrast warm daylight, agriculture marketplace Thailand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKTSR_0Nb6hhGY1IhfcfhsiihKdry_LD6Id26wLvA_54BKxKu9rJ-JNIsK-ubKfbM0sngx78CeREMW3IQ2yvtWJgEp2tYgEwtC9TE16vGklExMsr0jPXSfHC6Y-81mr39Px0Cth2JqjgF3-iCjZJWxQ1jGm1Y1k30d83pt4tcwXOQ06zJqv0Vftf6nnK8ukfqhnl9IDjQDd-_tdvCcW6LskyCZo_urWR4ruoHTP4FUynsIr-Held6uCw"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded-full bg-error text-on-error font-label-sm text-label-sm font-bold flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest animate-ping"></span>
+                🔴 เร่งด่วน (เหลือ 34 ชม.)
+              </div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div class="flex flex-col gap-1">
+<div class="flex items-start justify-between gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">มะม่วงน้ำดอกไม้สีทอง (เกรด A)</h3>
+<span class="px-space-xs py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold shrink-0">6 ข้อเสนอ</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 text-body-sm font-body-sm text-on-surface-variant">
+<span>คลังคงเหลือ: <strong class="text-on-surface font-semibold">3,500 กก.</strong></span>
+<span>บรรจุ: ลังพลาสติก 20 กก.</span>
+<span>ความสุก: 85%</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex flex-wrap items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-outline block">ข้อเสนอสูงสุดตอนนี้</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-secondary font-bold">฿38.00</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">/ กก.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-space-xs rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors shadow-sm" type="button">
+                    จัดการล็อต / ดูข้อเสนอ
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2: Fang Orange -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md flex flex-col sm:flex-row gap-space-md">
+<div class="relative w-full sm:w-44 h-36 shrink-0 rounded-xl overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Freshly picked Honey tangerine Sai Nam Phung oranges in bamboo baskets, Chiang Mai Fang valley morning mist, rich natural orange colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbLZTFNcE_FQFA2j1w_vpMjCPuhVk0bvY_eGOTxI67b0V7icbXjdPznHq7rDqlwmwNj2VQfrtH3Cjxie_Jm7MPDIEZDIM8D4pTj-LPaiR_4u9JoZGtiZNd_slR4qxVP3Y--ngyA3IE41poDZLoWVPiPDVo6kmxVwexpuKSXmcbxr_MMtE5bk5QdNhTPsGGi41CCt-cU2eBRckNwy_o4JaMhSUraOCNrDdJDQxeIklaxnk0SzRlP-xTNQ"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold shadow-sm">
+                🟡 ปานกลาง (เหลือ 3 วัน)
+              </div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div class="flex flex-col gap-1">
+<div class="flex items-start justify-between gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">ส้มสายน้ำผึ้ง เบอร์ 5 สวนฝาง</h3>
+<span class="px-space-xs py-0.5 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold shrink-0">3 ข้อเสนอ</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 text-body-sm font-body-sm text-on-surface-variant">
+<span>คลังคงเหลือ: <strong class="text-on-surface font-semibold">2,700 กก.</strong></span>
+<span>ความหวาน: 12.5 Brix</span>
+<span>คัดเกรดผิวสวย</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex flex-wrap items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-outline block">ข้อเสนอสูงสุดตอนนี้</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">฿33.50</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">/ กก.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-space-xs rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors" type="button">
+                    จัดการล็อต
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 3: Longan -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-md shadow-sm transition-all hover:shadow-md flex flex-col sm:flex-row gap-space-md">
+<div class="relative w-full sm:w-44 h-36 shrink-0 rounded-xl overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="High quality fresh premium Longan fruit bunches bunch grade AA on rustic wooden table with clean green orchard backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1qlOwi7STh_2VmbNIZjfVByffTy-QUvf_RSv2pdphYdVQDEnL3W_ecVgjdj_9EpWEL4gBya6dpZ53ThS4nkGE1jNEouSfrQ0XlJYYPldeCS14YXEnnGK-C5mBx-JX6Z_bmjZ9wZsxBngJdWk6H4Cbpr8jMDo9Ohk8ti4kILRP5jjxThqA2ipAIh_HZ_TDqeVLLa8X5e9JVwzJRjfQ7w84ui4RbxaKJs98XljEZbFO1-6zyRY2P2D_4A"/>
+<div class="absolute top-2 left-2 px-space-xs py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold shadow-sm">
+                🟢 พร้อมส่ง (เหลือ 6 วัน)
+              </div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div class="flex flex-col gap-1">
+<div class="flex items-start justify-between gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">ลำไยอีดอ เกรด AA (ส่งออก)</h3>
+<span class="px-space-xs py-0.5 rounded-md bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold shrink-0">2 ข้อเสนอ</span>
+</div>
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-1 text-body-sm font-body-sm text-on-surface-variant">
+<span>คลังคงเหลือ: <strong class="text-on-surface font-semibold">2,000 กก.</strong></span>
+<span>ขนาดผล: 28-30 มม.</span>
+<span>รมซัลเฟอร์มาตรฐาน GAP</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex flex-wrap items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-outline block">ข้อเสนอสูงสุดตอนนี้</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-primary font-bold">฿42.00</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">/ กก.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-space-xs rounded-xl bg-surface-container-low text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors" type="button">
+                    จัดการล็อต
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Incoming Offers from Brokers (5 cols) -->
+<div class="xl:col-span-5 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">ข้อเสนอราคารออนุมัติ (Incoming Bids)</h2>
+<span class="font-body-sm text-body-sm text-secondary font-medium">รอการตัดสินใจเพื่อเปิดใบส่งมอบ</span>
+</div>
+<span class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary font-label-sm text-label-sm flex items-center justify-center font-bold">5</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Offer 1 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold text-xs">SG</span>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight">บจก. สยาม โกลบอล ฟรุ๊ตส์</span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">verified</span> โบรกเกอร์ชั้น 1 • ทุนจดทะเบียน 50M
+                  </span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container-low text-outline font-label-sm text-label-sm">เมื่อ 12 นาทีก่อน</span>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant">สินค้า: <strong>มะม่วงน้ำดอกไม้สีทอง</strong></span>
+<span class="font-label-sm text-label-sm text-primary font-semibold bg-on-primary-container px-1.5 py-0.5 rounded">เหมาทั้งล็อต 3,500 กก.</span>
+</div>
+<div class="flex justify-between items-baseline mt-1">
+<span class="text-body-sm font-body-sm text-on-surface-variant">เสนอราคา ฿38.00/กก.</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">รวม ฿133,000</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">เงื่อนไข: วางเงิน Escrow 100% แล้ว • ส่งรถมารับพรุ่งนี้ 09:00 น.</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs mt-1">
+<button class="py-space-xs px-space-sm rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>คุยรายละเอียด</span>
+</button>
+<button class="py-space-xs px-space-sm rounded-xl bg-secondary text-on-secondary hover:bg-on-secondary-container transition-colors font-label-md text-label-md flex items-center justify-center gap-1 shadow-sm" onclick="this.innerHTML='✓ ยืนยันสำเร็จ'; this.classList.replace('bg-secondary','bg-primary');" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>ยอมรับข้อเสนอ</span>
+</button>
+</div>
+</div>
+<!-- Offer 2 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-secondary font-bold text-xs">จน</span>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight">เจ๊ณี ตลาดไท (แผงผลไม้เหนือ)</span>
+<span class="font-label-sm text-label-sm text-outline">คู่ค้าประจำ • ซื้อแล้ว 14 ครั้ง</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container-low text-outline font-label-sm text-label-sm">45 นาทีก่อน</span>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant">สินค้า: <strong>ส้มสายน้ำผึ้ง เบอร์ 5</strong></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold bg-surface-container px-1.5 py-0.5 rounded">2,700 กก.</span>
+</div>
+<div class="flex justify-between items-baseline mt-1">
+<span class="text-body-sm font-body-sm text-on-surface-variant">เสนอราคา ฿33.50/กก.</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">รวม ฿90,450</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">เงื่อนไข: รถห้องเย็นรับเองที่หน้าสวน • ชำระผ่าน Kaset Escrow</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs mt-1">
+<button class="py-space-xs px-space-sm rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+<span>คุยรายละเอียด</span>
+</button>
+<button class="py-space-xs px-space-sm rounded-xl bg-secondary text-on-secondary hover:bg-on-secondary-container transition-colors font-label-md text-label-md flex items-center justify-center gap-1 shadow-sm" onclick="this.innerHTML='✓ ยืนยันสำเร็จ'; this.classList.replace('bg-secondary','bg-primary');" type="button">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>ยอมรับข้อเสนอ</span>
+</button>
+</div>
+</div>
+<!-- Offer 3 (Split/Partial Offer) -->
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline font-bold text-xs">ND</span>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block leading-tight">หจก. นอร์ทเทิร์น ดรายฟรุ๊ต</span>
+<span class="font-label-sm text-label-sm text-outline">โรงงานอบแห้งลำพูน</span>
+</div>
+</div>
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container-low text-outline font-label-sm text-label-sm">2 ชม. ที่แล้ว</span>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="text-on-surface-variant">สินค้า: <strong>มะม่วงน้ำดอกไม้</strong></span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold bg-secondary-fixed px-1.5 py-0.5 rounded">ขอแบ่ง 1,000 กก.</span>
+</div>
+<div class="flex justify-between items-baseline mt-1">
+<span class="text-body-sm font-body-sm text-on-surface-variant">เสนอราคา ฿35.00/กก.</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">รวม ฿35,000</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">หมายเหตุ: เกรดคละไซส์สำหรับทำผลไม้อบแห้ง</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs mt-1">
+<button class="py-space-xs px-space-sm rounded-xl bg-surface-container-low text-error hover:bg-error-container transition-colors font-label-md text-label-md" type="button">
+                ปฏิเสธ
+              </button>
+<button class="py-space-xs px-space-sm rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md" type="button">
+                ต่อรองราคา
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Stepper Banner (Escrow Transparency) -->
+<div class="rounded-2xl bg-surface-container-low p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">verified_user</span>
+</div>
+<div>
+<span class="font-label-lg text-label-lg text-on-surface block">ขั้นตอนการันตีเงินชำระผ่านระบบ Kaset SafeTrade</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">รับประกันเงินโอนเข้าบัญชีทันทีเมื่อรถขนส่งตรวจรับสินค้าผ่านแอปคนขับ</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-2 font-label-sm text-label-sm text-on-surface">
+<span class="px-space-sm py-1 rounded-lg bg-surface-container-lowest text-primary font-bold">1. วางเงินมัดจำ (Escrow Locked)</span>
+<span class="material-symbols-outlined text-outline text-sm">arrow_forward</span>
+<span class="px-space-sm py-1 rounded-lg bg-surface-container-lowest text-primary font-bold">2. ตรวจสอบคุณภาพ</span>
+<span class="material-symbols-outlined text-outline text-sm">arrow_forward</span>
+<span class="px-space-sm py-1 rounded-lg bg-surface-container-lowest text-primary font-bold">3. ขึ้นรถห้องเย็น</span>
+<span class="material-symbols-outlined text-outline text-sm">arrow_forward</span>
+<span class="px-space-sm py-1 rounded-lg bg-primary-fixed text-on-primary-fixed font-bold">4. ปล่อยเงินโอนเกษตรกร</span>
+</div>
+</div>
+<!-- Recent Sales History (ประวัติการขายที่สำเร็จ) -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-lg md:p-space-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">ประวัติการขายที่สำเร็จ (Recent Settled Payouts)</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">รายการที่ส่งมอบเสร็จสิ้นและชำระเงินเรียบร้อยผ่าน KasetPay</span>
+</div>
+<div class="flex items-center gap-1 font-label-md text-label-md text-primary font-semibold cursor-pointer hover:underline">
+<span>ดูประวัติทั้งหมด (38 ล็อต)</span>
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-outline text-label-sm font-label-sm uppercase">
+<th class="py-space-sm px-space-md rounded-l-xl">รหัสล็อต</th>
+<th class="py-space-sm px-space-md">ผลผลิต &amp; ปริมาณ</th>
+<th class="py-space-sm px-space-md">ผู้รับซื้อ / ปลายทาง</th>
+<th class="py-space-sm px-space-md">ระยะเวลาปิดดีล</th>
+<th class="py-space-sm px-space-md">สถานะการส่งมอบ</th>
+<th class="py-space-sm px-space-md text-right rounded-r-xl">ยอดเงินสุทธิ</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-body-sm font-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-md font-mono text-label-md font-semibold text-primary">#LOT-AVO-2024</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">อะโวคาโดพันธุ์แฮส (Hass)</span>
+<span class="text-outline font-label-sm text-label-sm">1,500 กก. • เกรดคัดพรีเมียม</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="text-on-surface">ท็อปส์ ซูเปอร์มาร์เก็ต สาขาภาคเหนือ</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface">14 ชม.</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold">
+<span class="material-symbols-outlined text-sm">check_circle</span> ส่งมอบเรียบร้อย
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-numeric-table text-numeric-table font-bold text-on-surface">฿105,000</span>
+<span class="font-label-sm text-label-sm text-primary">โอนเข้า PromptPay แล้ว</span>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-md font-mono text-label-md font-semibold text-primary">#LOT-STB-2024</td>
+<td class="py-space-md px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">สตรอว์เบอร์รี พันธุ์พระราชทาน 80</span>
+<span class="text-outline font-label-sm text-label-sm">800 กก. • บรรจุกล่องโฟมเย็น</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<span class="text-on-surface">ร้านเบเกอรี่ &amp; คาเฟ่ เครือเชียงใหม่พรีเมียม</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold">12 ชม. (สถิติเร็วสุด)</span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-semibold">
+<span class="material-symbols-outlined text-sm">check_circle</span> ส่งมอบเรียบร้อย
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-numeric-table text-numeric-table font-bold text-on-surface">฿72,000</span>
+<span class="font-label-sm text-label-sm text-primary">โอนเข้า PromptPay แล้ว</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

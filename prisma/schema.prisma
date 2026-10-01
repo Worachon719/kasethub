@@ -1,0 +1,441 @@
+// KasetHub — Thai agricultural surplus marketplace
+// Prisma schema targeting PostgreSQL (Supabase-compatible).
+// Connection string is supplied via env("DATABASE_URL").
+// Supabase requires TLS and a pooled/direct connection string; see .env.example.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum UserRole {
+  FARMER // เกษตรกร / grower
+  BROKER // โบรกเกอร์ / aggregator
+  BUYER // ผู้ซื้อส่งออก / institutional buyer
+  ADMIN
+}
+
+enum VerificationTier {
+  UNVERIFIED
+  BASIC // ยืนยันตัวตนแล้ว
+  VERIFIED // เกษตรกรยืนยันตัวตน
+  CERTIFIED // โบรกเกอร์มาตรฐาน
+}
+
+enum LotStatus {
+  DRAFT
+  ACTIVE // เปิดขาย
+  RESERVED
+  SOLD
+  EXPIRED
+  WITHDRAWN
+}
+
+// Top-level produce categories, as shown in the marketplace filters.
+//
+// These are the four buckets the brief specifies, and they are deliberately
+// about *what the buyer does with the goods* rather than about farming method:
+// "organic" is not a category here, it is the Lot.organic flag. Broker contact
+// is likewise not a category — it lives at /brokers.
+//
+// The Thai labels live in lib/categories.ts, which the Zod enum is derived from,
+// so this list and the UI filters cannot drift apart.
+enum ProduceCategory {
+  FRESH_FRUIT // ผลไม้สด — eaten or processed within days
+  NATURAL_PRODUCT // ผลิตภัณฑ์จากธรรมชาติ — herbs, grains, unprocessed
+  READY_TO_EAT // สินค้าพร้อมทาน — no preparation needed
+  DRIED_FOOD // อาหารแห้ง — shelf-stable
+}
+
+enum Grade {
+  A // เกรดส่งออก
+  B
+  C // ตกเกรด
+  PROCESSING
+}
+
+enum ColdChainStatus {
+  AMBIENT
+  CHILLED
+  FROZEN
+}
+
+enum BidStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+  EXPIRED
+}
+
+enum ChatMessageKind {
+  TEXT
+  OFFER // structured counter-offer card inside the thread
+  SYSTEM
+}
+
+enum OrderStatus {
+  ESCROW_DEPOSITED // วางเงินประกัน
+  QUALITY_INSPECTED // ตรวจสอบสินค้า
+  LOADED_SHIPPED // ขนส่งขึ้นรถ
+  COMPLETED // ปล่อยเงินโอน
+  DISPUTED
+  CANCELLED
+}
+
+enum Region {
+  NORTH // ภาคเหนือ
+  NORTHEAST // ภาคอีสาน
+  CENTRAL // ภาคกลาง
+  EAST // ภาคตะวันออก
+  WEST // ภาคตะวันตก
+  SOUTH // ภาคใต้
+}
+
+// ---------------------------------------------------------------------------
+// Geography
+// ---------------------------------------------------------------------------
+
+model Province {
+  id        String @id @default(cuid())
+  nameTh    String @map("name_th")
+  nameEn    String @map("name_en")
+  code      String @unique // e.g. "CMI", "NBI", "RYG", "STP"
+  region    Region
+  latitude  Float?
+  longitude Float?
+
+  lots      Lot[]
+  suppliers Supplier[]
+  users     User[]
+  prices    MarketPrice[]
+  watches   BrokerWatch[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("provinces")
+}
+
+// ---------------------------------------------------------------------------
+// Accounts
+// ---------------------------------------------------------------------------
+
+model User {
+  id           String           @id @default(cuid())
+  email        String           @unique
+  phone        String?          @unique
+  passwordHash String?          @map("password_hash")
+  lineId       String?          @map("line_id")
+  whatsapp     String?
+  nameTh       String?          @map("name_th")
+  nameEn       String?          @map("name_en")
+  avatarUrl    String?          @map("avatar_url")
+  role         UserRole         @default(FARMER)
+  verification VerificationTier @default(UNVERIFIED)
+
+  provinceId String?   @map("province_id")
+  province   Province? @relation(fields: [provinceId], references: [id], onDelete: SetNull)
+  district   String?
+
+  // Public storefront, shown at /shop/:id. Optional on purpose: a grower who
+  // has not filled these in still lists produce, they just have no shop page.
+  // Deliberately no phone or email here — those stay off public pages; contact
+  // runs through LINE (lineId) and the deal room.
+  shopName        String? @map("shop_name")
+  shopDescription String? @map("shop_description")
+
+  ratingAvg   Float @default(0) @map("rating_avg")
+  ratingCount Int   @default(0) @map("rating_count")
+  dealCount   Int   @default(0) @map("deal_count")
+
+  lots           Lot[]         @relation("FarmerLots")
+  bids           Bid[]
+  ordersAsBuyer  Order[]       @relation("BuyerOrders")
+  ordersAsSeller Order[]       @relation("SellerOrders")
+  sentMessages   ChatMessage[]
+  reviewsWritten Review[]      @relation("WrittenReviews")
+  reviewsGot     Review[]      @relation("ReceivedReviews")
+  ownedSuppliers Supplier[]
+  watches        BrokerWatch[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([role])
+  @@index([provinceId])
+  @@map("users")
+}
+
+model Supplier {
+  id         String           @id @default(cuid())
+  ownerId    String           @map("owner_id")
+  owner      User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  nameTh     String           @map("name_th")
+  nameEn     String?          @map("name_en")
+  tier       VerificationTier @default(UNVERIFIED)
+  provinceId String?          @map("province_id")
+  province   Province?        @relation(fields: [provinceId], references: [id], onDelete: SetNull)
+  district   String?
+  address    String?
+  escrowCap  Int              @default(0) @map("escrow_cap") // วงเงิน Escrow (THB)
+
+  lots Lot[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([provinceId])
+  @@index([tier])
+  @@map("suppliers")
+}
+
+// ---------------------------------------------------------------------------
+// Marketplace
+// ---------------------------------------------------------------------------
+
+model Lot {
+  id          String          @id @default(cuid())
+  lotCode     String          @unique @map("lot_code") // รหัสล็อต
+  titleTh     String          @map("title_th")
+  titleEn     String          @map("title_en")
+  category    ProduceCategory
+  grade       Grade           @default(A)
+  variety     String? // พันธุ์ เช่น หมอนทอง, อีดอ, เบอร์ 5
+  description String?
+
+  // ราคาเสนอขาย (บาท/กก.)
+  askPricePerKg  Float  @map("ask_price_per_kg")
+  // ราคาที่ต้องการ (บาท/กก.) — used by buyer demand requests
+  wantPricePerKg Float? @map("want_price_per_kg")
+
+  quantityKg     Int @default(0) @map("quantity_kg")
+  minOrderKg     Int @default(1) @map("min_order_kg")
+  availableQtyKg Int @default(0) @map("available_qty_kg")
+
+  status       LotStatus       @default(ACTIVE)
+  isSurplus    Boolean         @default(false) @map("is_surplus") // สินค้าล้นสวน
+  coldChain    ColdChainStatus @default(AMBIENT)
+  organic      Boolean         @default(false)
+  gapCertified Boolean         @default(false) @map("gap_certified")
+
+  harvestDate   DateTime? @map("harvest_date")
+  expiresAt     DateTime? @map("expires_at") // drives spoilage urgency
+  auctionEndsAt DateTime? @map("auction_ends_at")
+
+  provinceId String?   @map("province_id")
+  province   Province? @relation(fields: [provinceId], references: [id], onDelete: SetNull)
+  district   String?   @map("district")
+  latitude   Float?
+  longitude  Float?
+
+  farmerId   String?   @map("farmer_id")
+  farmer     User?     @relation("FarmerLots", fields: [farmerId], references: [id], onDelete: SetNull)
+  supplierId String?   @map("supplier_id")
+  supplier   Supplier? @relation(fields: [supplierId], references: [id], onDelete: SetNull)
+
+  images    LotImage[]
+  bids      Bid[]
+  orders    Order[]
+  priceLogs PriceLog[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([status, isSurplus])
+  @@index([category])
+  @@index([provinceId])
+  @@index([farmerId])
+  @@index([expiresAt])
+  @@index([askPricePerKg])
+  @@map("lots")
+}
+
+model LotImage {
+  id        String   @id @default(cuid())
+  lotId     String   @map("lot_id")
+  lot       Lot      @relation(fields: [lotId], references: [id], onDelete: Cascade)
+  url       String
+  altTh     String?  @map("alt_th")
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([lotId])
+  @@map("lot_images")
+}
+
+model Bid {
+  id         String    @id @default(cuid())
+  lotId      String    @map("lot_id")
+  lot        Lot       @relation(fields: [lotId], references: [id], onDelete: Cascade)
+  bidderId   String    @map("bidder_id")
+  bidder     User      @relation(fields: [bidderId], references: [id], onDelete: Cascade)
+  pricePerKg Float     @map("price_per_kg")
+  quantityKg Int       @map("quantity_kg")
+  note       String?
+  status     BidStatus @default(PENDING)
+  expiresAt  DateTime? @map("expires_at")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  messages ChatMessage[]
+
+  @@index([lotId, status])
+  @@index([bidderId])
+  @@index([pricePerKg])
+  @@map("bids")
+}
+
+model Order {
+  id           String      @id @default(cuid())
+  orderCode    String      @unique @map("order_code")
+  lotId        String      @map("lot_id")
+  lot          Lot         @relation(fields: [lotId], references: [id], onDelete: Cascade)
+  buyerId      String      @map("buyer_id")
+  buyer        User        @relation("BuyerOrders", fields: [buyerId], references: [id])
+  sellerId     String?     @map("seller_id")
+  seller       User?       @relation("SellerOrders", fields: [sellerId], references: [id], onDelete: SetNull)
+  quantityKg   Int         @map("quantity_kg")
+  pricePerKg   Float       @map("price_per_kg")
+  subtotalThb  Int         @map("subtotal_thb")
+  platformFee  Int         @default(0) @map("platform_fee")
+  netPayoutThb Int         @map("net_payout_thb")
+  status       OrderStatus @default(ESCROW_DEPOSITED)
+  closedAt     DateTime?   @map("closed_at")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+
+  events   OrderEvent[]
+  messages ChatMessage[]
+
+  @@index([buyerId])
+  @@index([sellerId])
+  @@index([status])
+  @@map("orders")
+}
+
+model OrderEvent {
+  id        String      @id @default(cuid())
+  orderId   String      @map("order_id")
+  order     Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  status    OrderStatus
+  note      String?
+  actorId   String?     @map("actor_id")
+  createdAt DateTime    @default(now()) @map("created_at")
+
+  @@index([orderId])
+  @@map("order_events")
+}
+
+model ChatMessage {
+  id              String          @id @default(cuid())
+  orderId         String?         @map("order_id")
+  order           Order?          @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  // Negotiation threads open on a bid, before any order exists.
+  bidId           String?         @map("bid_id")
+  bid             Bid?            @relation(fields: [bidId], references: [id], onDelete: Cascade)
+  senderId        String          @map("sender_id")
+  sender          User            @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  body            String
+  // Photo proof of produce or scale readings, one attachment per message.
+  imageUrl        String?         @map("image_url")
+  imageAlt        String?         @map("image_alt")
+  kind            ChatMessageKind @default(TEXT)
+  // Populated when kind = OFFER; mirrors the terms in a counter-offer card.
+  offerPricePerKg Float?          @map("offer_price_per_kg")
+  offerQuantityKg Int?            @map("offer_quantity_kg")
+  readAt          DateTime?       @map("read_at")
+  createdAt       DateTime        @default(now()) @map("created_at")
+
+  @@index([orderId, createdAt])
+  @@index([bidId, createdAt])
+  @@index([senderId])
+  @@map("chat_messages")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  orderId   String?  @map("order_id")
+  authorId  String   @map("author_id")
+  author    User     @relation("WrittenReviews", fields: [authorId], references: [id], onDelete: Cascade)
+  subjectId String   @map("subject_id")
+  subject   User     @relation("ReceivedReviews", fields: [subjectId], references: [id], onDelete: Cascade)
+  rating    Int // 1..5
+  comment   String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([orderId, authorId])
+  @@index([subjectId])
+  @@map("reviews")
+}
+
+// A saved search for surplus that is about to spoil.
+//
+// Brokers and buyers register a watch on a category (optionally narrowed to one
+// province and to lots above a size) and /alerts resolves it against lots whose
+// shelf life is under the urgency threshold. The match is computed at read time
+// rather than materialised, so a watch never goes stale: widening the urgency
+// window needs no backfill, and deleting a lot cannot leave a dangling alert.
+//
+// `id` is a cuid rather than a composite natural key because two watches with
+// the same criteria are meaningless duplicates, not meaningful rows.
+model BrokerWatch {
+  id     String   @id @default(cuid())
+  userId String   @map("user_id")
+  user   User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  category ProduceCategory
+
+  // Optional narrowing. A null province means "anywhere in Thailand"; a null
+  // minQuantityKg means "any size, including single-crate lots".
+  provinceId String?   @map("province_id")
+  province   Province? @relation(fields: [provinceId], references: [id], onDelete: Cascade)
+  label      String?
+  minQuantityKg Int?   @map("min_quantity_kg")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([userId, category])
+  @@index([provinceId])
+  @@map("broker_watches")
+}
+
+// ---------------------------------------------------------------------------
+// Market price index (ตารางราคาตลาด)
+// ---------------------------------------------------------------------------
+
+model MarketPrice {
+  id         String          @id @default(cuid())
+  category   ProduceCategory
+  variety    String?
+  provinceId String?         @map("province_id")
+  province   Province?       @relation(fields: [provinceId], references: [id], onDelete: SetNull)
+  pricePerKg Float           @map("price_per_kg")
+  changePct  Float           @default(0) @map("change_pct") // +3.4 / -1.2
+  recordedAt DateTime        @default(now()) @map("recorded_at")
+  sparkline  Float[]         @default([]) // 7-day series
+
+  @@index([category, recordedAt])
+  @@index([provinceId])
+  @@map("market_prices")
+}
+
+model PriceLog {
+  id         String   @id @default(cuid())
+  lotId      String   @map("lot_id")
+  lot        Lot      @relation(fields: [lotId], references: [id], onDelete: Cascade)
+  pricePerKg Float    @map("price_per_kg")
+  source     String   @default("ASK")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([lotId, createdAt])
+  @@map("price_logs")
+}

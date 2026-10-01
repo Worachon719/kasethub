@@ -1,0 +1,24 @@
+# Normalise line endings so a file committed on Windows is byte-identical to
+# the same file committed on Linux or macOS.
+#
+# Without this, `core.autocrlf=true` (the Git for Windows default) rewrites LF
+# to CRLF in the working tree on every checkout, which makes `git status` dirty
+# for files the commit did not touch, and turns warnings like "LF will be
+# replaced by CRLF" into routine noise you learn to ignore — which is how a real
+# diff gets missed.
+#
+# `eol=lf` pins the working tree to LF as well. The scripts here are run with
+# node and sh, and CRLF in a shebang line is a failure mode, so there is no
+# platform on which CRLF is the better default for this repository.
+* text=auto eol=lf
+
+# Binary assets: never diff, never convert.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

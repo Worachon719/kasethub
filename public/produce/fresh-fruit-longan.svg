@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="ลำไย">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fcd34d"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.42" r="0.72">
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.07"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <g transform="translate(395.0 184.5) scale(2.05)">
+    
+    <path d="M100 34c3 0 5 2 5 5v18" stroke="#78350f" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M100 52c-4 16-20 26-36 32M100 52c4 16 20 26 36 32M100 52v34" stroke="#a16207" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <circle cx="100" cy="104" r="30" fill="#b45309"/><circle cx="91" cy="93.5" r="8.4" fill="#fffbeb" opacity="0.5"/><circle cx="58" cy="128" r="27" fill="#b45309"/><circle cx="49.9" cy="118.55" r="7.5600000000000005" fill="#fffbeb" opacity="0.5"/><circle cx="142" cy="128" r="27" fill="#b45309"/><circle cx="133.9" cy="118.55" r="7.5600000000000005" fill="#fffbeb" opacity="0.5"/><circle cx="100" cy="158" r="28" fill="#b45309"/><circle cx="91.6" cy="148.2" r="7.840000000000001" fill="#fffbeb" opacity="0.5"/><circle cx="66" cy="180" r="24" fill="#b45309"/><circle cx="58.8" cy="171.6" r="6.720000000000001" fill="#fffbeb" opacity="0.5"/><circle cx="136" cy="180" r="24" fill="#b45309"/><circle cx="128.8" cy="171.6" r="6.720000000000001" fill="#fffbeb" opacity="0.5"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#vignette)"/>
+
+  <text x="600" y="826" text-anchor="middle"
+        font-family="'Noto Sans Thai','Leelawadee UI',Tahoma,'Apple SD Gothic Neo',sans-serif"
+        font-size="58" font-weight="700" fill="#b45309">ลำไย</text>
+  <text x="600" y="868" text-anchor="middle"
+        font-family="'Noto Sans Thai','Leelawadee UI',Tahoma,sans-serif"
+        font-size="26" font-weight="600" fill="#b45309" opacity="0.62">KasetHub</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="ผลไม้สด">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="100%" stop-color="#fcd34d"/>
+    </linearGradient>
+    <radialGradient id="vignette" cx="0.5" cy="0.42" r="0.72">
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.07"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <g transform="translate(395.0 184.5) scale(2.05)">
+    
+    <path d="M100 55c22 0 34 14 44 30 14 22 40 42 40 74 0 42-38 71-84 71S16 201 16 159c0-24 12-38 26-52 14-14 18-30 30-40 6-5 16-12 28-12Z" fill="#b45309"/>
+    <path d="M100 55c14 0 22 8 30 18" stroke="#166534" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M132 44c22-16 46-14 58 2-18 16-42 18-58-2Z" fill="#15803d"/>
+    <ellipse cx="70" cy="140" rx="17" ry="27" fill="#fffbeb" opacity="0.55" transform="rotate(-22 70 140)"/>
+  </g>
+  <rect width="1200" height="900" fill="url(#vignette)"/>
+
+  <text x="600" y="826" text-anchor="middle"
+        font-family="'Noto Sans Thai','Leelawadee UI',Tahoma,'Apple SD Gothic Neo',sans-serif"
+        font-size="58" font-weight="700" fill="#b45309">ผลไม้สด</text>
+  <text x="600" y="868" text-anchor="middle"
+        font-family="'Noto Sans Thai','Leelawadee UI',Tahoma,sans-serif"
+        font-size="26" font-weight="600" fill="#b45309" opacity="0.62">KasetHub</text>
+</svg>
