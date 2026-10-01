@@ -41,3 +41,6 @@ prisma/*.db-journal
 
 # test fixtures written by scripts/make-test-images.mjs
 /tmp-e2e-images/
+
+.vercel
+.env*
