@@ -54,7 +54,8 @@
 ## F. Vercel
 
 - [ ] Import repo จาก GitHub
-- [ ] ใส่ Environment Variables 8 ตัว **ก่อน deploy ครั้งแรก**
+- [ ] ใส่ Environment Variables 10 ตัว **ก่อน deploy ครั้งแรก**
+      (8 ตัวหลัก + `REGISTRATION_OPEN` / `MAX_REGISTERED_USERS` ดูข้อ G)
 - [ ] Deploy
 - [ ] แก้ `NEXTAUTH_URL` / `NEXT_PUBLIC_SITE_URL` เป็นโดเมนจริง → Redeploy
       (ค่า `localhost:3000` คือสาเหตุที่พบบ่อยที่สุดของลูปล็อกอินที่ไม่จบ)
@@ -67,4 +68,17 @@
       แล้วอัปเดต `DATABASE_URL` + `DIRECT_URL` ทุกที่ (ทั้งเครื่องและ Vercel)
 - [ ] ตรวจว่า `NEXTAUTH_SECRET` เป็นค่าสุ่มจริง ไม่ใช่ข้อความ placeholder
 - [ ] ยืนยันว่า RLS เปิดทุกตารางใน `public` (ดูข้อ D)
-- [ ] ใส่เนื้อหาจริงใน `/terms` และ `/privacy` ก่อนเปิดให้คนทั่วไปใช้
+- [x] ใส่เนื้อหาจริงใน `/terms` และ `/privacy` ก่อนเปิดให้คนทั่วไปใช้
+      (มีข้อความระบุว่าเป็นงานมหาลัยอยู่ในหัวทั้งสองหน้า ดู `components/academic-notice.tsx`)
+
+## H. การสาธิต
+
+เว็บตัวนี้ถูก deploy บนโดเมนสาธารณะ แต่ใช้ฐานข้อมูลชุดเดียวกับที่ใช้สาธิต สองเรื่องที่ต้องดูแล:
+
+- [ ] **การสมัครบัญชี** — หน้า `/register` เปิดให้ทุกคน แต่มีโควตาตาม `MAX_REGISTERED_USERS`
+      คนที่ไม่ใช่ทีมสาธิตสมัครแล้วข้อมูลจะปนในฐานข้อมูลจริง
+      ถ้าไม่อยากให้สมัคร: ตั้ง `REGISTRATION_OPEN=false` ใน Vercel แล้ว redeploy
+      (บัญชีทดลองครบทุกบทบาทอยู่แล้ว กดใช้ได้จากหน้า `/login`)
+- [ ] **ลบบัญชีทดลองก่อนสาธิต** — ถ้ามีผู้สมัครจากการทดสอบ
+      ล้างด้วย `DELETE FROM "User" WHERE email LIKE 'gate%' OR email LIKE 'smoke%';`
+      (ชื่อตารางต้องตรงกับ `prisma/schema.prisma`)
