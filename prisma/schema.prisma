@@ -10,6 +10,16 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+
+  // Migrations and `prisma generate` must not go through the Transaction pooler
+  // (port 6543). Prisma takes a session-level advisory lock before applying a
+  // migration; PgBouncer's transaction mode has no session state, so that lock
+  // never resolves and the command hangs until it times out. DIRECT_URL points
+  // at the Session pooler (port 5432), which does support advisory locks.
+  //
+  // On Vercel: DATABASE_URL = :6543 (runtime, one connection per serverless
+  // instance), DIRECT_URL = :5432 (build + migrate only).
+  directUrl = env("DIRECT_URL")
 }
 
 // ---------------------------------------------------------------------------
